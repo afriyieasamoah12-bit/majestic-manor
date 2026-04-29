@@ -9,7 +9,7 @@ const BMEPortal = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [view]);
 
-  // Business Intelligence Dimensions
+  // Financial Intelligence
   const revPerGuest = 250;
   const grossRevenue = guests * revPerGuest;
   const opexRate = 0.45; 
@@ -37,7 +37,7 @@ const BMEPortal = () => {
   return (
     <div style={{ backgroundColor: '#050505', color: '#F8F4EC', minHeight: '100vh', fontFamily: "'Cinzel', serif", lineHeight: '1.8' }}>
       
-      {/* ATMOSPHERIC LIGHTING LAYER */}
+      {/* ATMOSPHERIC LIGHTING */}
       <div style={{ 
         position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
         background: 'radial-gradient(circle at 50% 30%, rgba(201,168,106,0.1) 0%, transparent 70%)',
@@ -59,74 +59,7 @@ const BMEPortal = () => {
 
       <main style={{ padding: '100px 20px', maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        {/* --- COLLECTIONS VIEW --- */}
-        {view === 'collections' && (
-          <div style={{ animation: 'fadeIn 1s' }}>
-            <SectionHeader title="THE MAJESTY COLLECTION" subtitle="TIERED BIBLICAL PACKAGES & PREMIER AMENITIES" />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
-              
-              {/* THE GENESIS */}
-              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer', transition: '0.4s' }} onMouseOver={e => e.currentTarget.style.borderColor = '#C9A86A'} onMouseOut={e => e.currentTarget.style.borderColor = '#222'}>
-                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🕊️</div>
-                <h3 style={{ color: '#C9A86A', letterSpacing: '4px' }}>THE GENESIS</h3>
-                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>A Foundation of Elegance</p>
-                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
-                  <li style={{ marginBottom: '10px' }}>• <strong>4-Hour Window:</strong> Intimate ceremony & reception.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Scented Sanctuary:</strong> Signature "Morning of Creation" aroma.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>BME Lead Designer:</strong> Personal coordination of timeline.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Essential Gastronomy:</strong> 3-course Mediterranean hors d'oeuvres.</li>
-                </ul>
-                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$8,000+</div>
-              </div>
-
-              {/* THE ROYAL PSALMS */}
-              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer', transition: '0.4s' }} onMouseOver={e => e.currentTarget.style.borderColor = '#C9A86A'} onMouseOut={e => e.currentTarget.style.borderColor = '#222'}>
-                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>📜</div>
-                <h3 style={{ color: '#C9A86A', letterSpacing: '4px' }}>THE ROYAL PSALMS</h3>
-                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>A Symphony of Praise</p>
-                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Full Day Access:</strong> 10:00 AM – 11:00 PM.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Live Harpist:</strong> Ambient soundscape for cocktail hour.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Floral Artistry:</strong> Floor-to-ceiling ivory and gold floral walls.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Aerial Capture:</strong> 1-hour professional Drone photography.</li>
-                </ul>
-                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$15,000+</div>
-              </div>
-
-              {/* THE ESTHER */}
-              <div onClick={triggerCelebration} style={{ background: '#111', padding: '50px 30px', border: '1px solid #C9A86A', textAlign: 'center', cursor: 'pointer', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: '#C9A86A', color: '#050505', padding: '5px 15px', fontSize: '0.6rem', fontWeight: 'bold' }}>MOST POPULAR</div>
-                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>👑</div>
-                <h3 style={{ color: '#C9A86A', letterSpacing: '4px' }}>THE ESTHER</h3>
-                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>For Such a Time as This</p>
-                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Gold-Leaf Catering:</strong> 5-course signature "Esther Feast."</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Bridal Suite Experience:</strong> Mimosas & private vanity team.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Cinematic Drone:</strong> Full-event aerial videography/tracking.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Projection Mapping:</strong> Immersive brand/story visual walls.</li>
-                </ul>
-                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$30,000+</div>
-              </div>
-
-              {/* THE SOLOMON */}
-              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer', transition: '0.4s' }} onMouseOver={e => e.currentTarget.style.borderColor = '#C9A86A'} onMouseOut={e => e.currentTarget.style.borderColor = '#222'}>
-                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🏛️</div>
-                <h3 style={{ color: '#C9A86A', letterSpacing: '4px' }}>THE SOLOMON</h3>
-                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>The Pinnacle of Wisdom & Wealth</p>
-                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Weekend Takeover:</strong> Friday – Sunday estate exclusivity.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Castle Lodging:</strong> Overnight suites for 12 VIP guests.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>7-Course Covenant Menu:</strong> Rare spices & private chef table.</li>
-                  <li style={{ marginBottom: '10px' }}>• <strong>Apex Logistics:</strong> 2 Captains + 1 Private Concierge.</li>
-                </ul>
-                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$50,000+</div>
-              </div>
-
-            </div>
-          </div>
-        )}
-
-        {/* ALL OTHER VIEWS REMAIN FULLY INTACT BELOW */}
+        {/* HOME VIEW */}
         {view === 'home' && (
           <section style={{ textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h1 style={{ fontSize: '7rem', color: '#C9A86A', margin: '0', animation: 'glow 3s infinite alternate' }}>B.M.E</h1>
@@ -139,7 +72,191 @@ const BMEPortal = () => {
           </section>
         )}
 
-        {/* ... Rest of code for About, Weddings, Corporate, Social, Food, Dashboard stays same ... */}
+        {/* ABOUT US */}
+        {view === 'about' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="THE STEWARDSHIP" subtitle="OUR STORY & DIVINE PURPOSE" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+              <div style={{ padding: '50px', border: '1px solid #C9A86A', background: 'rgba(201,168,106,0.02)' }}>
+                <h3 style={{ color: '#C9A86A' }}>The Vision</h3>
+                <p>Inspired by the biblical "House of God," B.M.E reflects a standard of purity, honor, and divine elegance. Every event is treated as a sacred trust, elevating hospitality to a form of ministry and art.</p>
+              </div>
+              <div style={{ lineHeight: '2.2' }}>
+                <p>Founded by Afriyie Asamoah, our $7M estate project in Cincinnati is designed to be a sanctuary. We blend high-energy event planning with the timeless beauty of biblical aesthetics to create a world-class legacy for our clients.</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* WEDDINGS */}
+        {view === 'weddings' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="ROYAL UNIONS" subtitle="WHERE COVENANTS ARE CELEBRATED" />
+            <div style={{ background: '#111', padding: '60px', borderBottom: '2px solid #C9A86A', marginBottom: '40px' }}>
+              <h3 style={{ color: '#C9A86A' }}>THE PILLAR CEREMONY</h3>
+              <p>An outdoor processional framed by towering ivory pillars, designed for a union that feels timeless. Overlooking the lush landscape of the Ohio Valley.</p>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+              <div style={{ background: '#0A0A0B', padding: '40px', border: '1px solid #222' }}>
+                <h4 style={{ color: '#C9A86A' }}>Bridal Sanctuary</h4>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>1,500 sq. ft. of luxury featuring private vanity stations, a champagne bar, and direct altar access.</p>
+              </div>
+              <div style={{ background: '#0A0A0B', padding: '40px', border: '1px solid #222' }}>
+                <h4 style={{ color: '#C9A86A' }}>Groom's Lounge</h4>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>A leather-bound retreat with a private cigar terrace, billiards, and tailoring services.</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CORPORATE */}
+        {view === 'corporate' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="VISIONARY GALAS" subtitle="CORPORATE IMPACT & INNOVATION" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px' }}>
+              <div>
+                <h3 style={{ color: '#C9A86A' }}>High-Impact Summits</h3>
+                <p>Transform your brand message through immersive projection mapping and 360-degree digital storytelling. Our grand hall hosts up to 800 executive guests with Tier-1 white-glove service.</p>
+              </div>
+              <div style={{ background: '#111', padding: '40px', border: '1px solid #333' }}>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '15px' }}>• Immersive Brand Visuals</li>
+                  <li style={{ marginBottom: '15px' }}>• Executive Boardroom Suites</li>
+                  <li style={{ marginBottom: '15px' }}>• Global Hybrid connectivity</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* SOCIAL */}
+        {view === 'social' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="MILESTONE HONORS" subtitle="CELEBRATING LIFE'S LEGACY" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
+              {['Legacy Birthdays', 'Prestige Graduations', 'Divine Soirées'].map(item => (
+                <div key={item} style={{ padding: '40px', border: '1px solid #333', textAlign: 'center', background: '#0A0A0B' }}>
+                  <h4 style={{ color: '#C9A86A', letterSpacing: '2px' }}>{item.toUpperCase()}</h4>
+                  <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>Bespoke celebrations utilizing interactive video walls and custom family heritage storytelling.</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* FOOD */}
+        {view === 'food' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="COVENANT DINING" subtitle="A TASTE OF THE DIVINE" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+              <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
+                <h3 style={{ color: '#C9A86A' }}>THE ESTHER FEAST</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>Pomegranate-glazed lamb, gold-leafed figs, and ancient grain pilaf sourced from local organic farms.</p>
+              </div>
+              <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
+                <h3 style={{ color: '#C9A86A' }}>LEVANTINE HARVEST</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>Artisanal honeys, rare Mediterranean spices, and sea-salt crusted bass representing the bounty of the harvest.</p>
+              </div>
+              <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
+                <h3 style={{ color: '#C9A86A' }}>EDENIC SWEETS</h3>
+                <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>Hand-crafted chocolates with 24k gold leaf and sacred spice-infused creams.</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* COLLECTIONS */}
+        {view === 'collections' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="THE MAJESTY COLLECTION" subtitle="TIERED BIBLICAL PACKAGES & PREMIER AMENITIES" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
+              
+              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🕊️</div>
+                <h3 style={{ color: '#C9A86A' }}>THE GENESIS</h3>
+                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>A Foundation of Elegance</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
+                  <li style={{ marginBottom: '10px' }}>• 4-Hour Window: Intimate focus.</li>
+                  <li style={{ marginBottom: '10px' }}>• Scented Sanctuary: Morning aroma.</li>
+                  <li style={{ marginBottom: '10px' }}>• Lead Designer: Timeline curation.</li>
+                  <li style={{ marginBottom: '10px' }}>• Mediterranean hors d'oeuvres.</li>
+                </ul>
+                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$8,000+</div>
+              </div>
+
+              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>📜</div>
+                <h3 style={{ color: '#C9A86A' }}>THE ROYAL PSALMS</h3>
+                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>A Symphony of Praise</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
+                  <li style={{ marginBottom: '10px' }}>• Full Day Access: 10AM – 11PM.</li>
+                  <li style={{ marginBottom: '10px' }}>• Live Harpist: Ambient soundscape.</li>
+                  <li style={{ marginBottom: '10px' }}>• Ivory & Gold Floral Art Walls.</li>
+                  <li style={{ marginBottom: '10px' }}>• 1-Hour Professional Drone Capture.</li>
+                </ul>
+                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$15,000+</div>
+              </div>
+
+              <div onClick={triggerCelebration} style={{ background: '#111', padding: '50px 30px', border: '1px solid #C9A86A', textAlign: 'center', cursor: 'pointer', position: 'relative' }}>
+                <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: '#C9A86A', color: '#050505', padding: '5px 15px', fontSize: '0.6rem', fontWeight: 'bold' }}>MOST POPULAR</div>
+                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>👑</div>
+                <h3 style={{ color: '#C9A86A' }}>THE ESTHER</h3>
+                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>For Such a Time as This</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
+                  <li style={{ marginBottom: '10px' }}>• 5-Course "Esther Feast."</li>
+                  <li style={{ marginBottom: '10px' }}>• Bridal Suite with Mimosas & Team.</li>
+                  <li style={{ marginBottom: '10px' }}>• Cinematic Drone Videography.</li>
+                  <li style={{ marginBottom: '10px' }}>• Full Room Projection Mapping.</li>
+                </ul>
+                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$30,000+</div>
+              </div>
+
+              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🏛️</div>
+                <h3 style={{ color: '#C9A86A' }}>THE SOLOMON</h3>
+                <p style={{ fontSize: '0.75rem', opacity: 0.5, marginBottom: '20px' }}>Pinnacle of Wisdom & Wealth</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.85rem', opacity: 0.8, textAlign: 'left', marginBottom: '30px' }}>
+                  <li style={{ marginBottom: '10px' }}>• Weekend Estate Takeover.</li>
+                  <li style={{ marginBottom: '10px' }}>• Castle Lodging for 12 VIPs.</li>
+                  <li style={{ marginBottom: '10px' }}>• 7-Course Rare Spice Menu.</li>
+                  <li style={{ marginBottom: '10px' }}>• 2 Captains + Private Concierge.</li>
+                </ul>
+                <div style={{ fontSize: '1.4rem', color: '#C9A86A', fontWeight: 'bold' }}>$50,000+</div>
+              </div>
+
+            </div>
+          </div>
+        )}
+
+        {/* DASHBOARD */}
+        {view === 'dashboard' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="THE APEX ENGINE" subtitle="ROI & LOGISTICAL DIMENSIONS" />
+            <div style={{ background: '#111', padding: '60px', border: '1px solid #C9A86A' }}>
+              <label style={{ color: '#C9A86A', letterSpacing: '3px' }}>GUEST COUNT CAPACITY: {guests}</label>
+              <input type="range" min="100" max="1000" value={guests} onChange={(e) => setGuests(e.target.value)} style={{ width: '100%', accentColor: '#C9A86A', marginTop: '20px' }} />
+              
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginTop: '60px' }}>
+                <div style={{ padding: '25px', background: '#050505', textAlign: 'center', border: '1px solid #222' }}>
+                  <small style={{ opacity: 0.5 }}>GROSS REVENUE</small>
+                  <div style={{ fontSize: '1.5rem', color: '#C9A86A' }}>${grossRevenue.toLocaleString()}</div>
+                </div>
+                <div style={{ padding: '25px', background: '#050505', textAlign: 'center', border: '1px solid #222' }}>
+                  <small style={{ opacity: 0.5 }}>EXPENSES</small>
+                  <div style={{ fontSize: '1.5rem', color: '#ff4d4d' }}>-${totalExpenses.toLocaleString()}</div>
+                </div>
+                <div style={{ padding: '25px', background: '#050505', textAlign: 'center', border: '1px solid #C9A86A' }}>
+                  <small style={{ color: '#C9A86A' }}>NET PROFIT</small>
+                  <div style={{ fontSize: '1.5rem' }}>${netProfit.toLocaleString()}</div>
+                </div>
+                <div style={{ padding: '25px', background: '#050505', textAlign: 'center', border: '1px solid #C9A86A' }}>
+                  <small style={{ color: '#C9A86A' }}>MARGIN</small>
+                  <div style={{ fontSize: '1.5rem' }}>{profitMargin}%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       </main>
 
