@@ -1,126 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
+import Spline from '@splinetool/react-spline';
 import confetti from 'canvas-confetti';
 
-const BMEEvents = () => {
-  const [guests, setGuests] = useState(100);
-  
-  // Official B.M.E Colors
-  const colors = {
-    gold: '#C9A86A',
-    ivory: '#F8F4EC',
-    onyx: '#1B1B1D',
-    plum: '#4C2A63'
-  };
+const BMEExperience = () => {
+  const [loading, setLoading] = useState(true);
 
-  // Logic for Package Names based on your research
-  const getPackage = (count) => {
-    if (count <= 75) return { name: "The Genesis Experience", desc: "Perfect for intimate, sacred gatherings." };
-    if (count <= 200) return { name: "The Royal Psalms Package", desc: "Full-service planning with luxury touches." };
-    if (count <= 400) return { name: "The Esther Luxury Collection", desc: "High-end, all-inclusive majesty." };
-    return { name: "The Solomon Signature", desc: "Top-tier luxury and elite coordination." };
-  };
-
-  const currentPackage = getPackage(guests);
-  const revenue = guests * 150; 
-  const captains = Math.ceil(guests / 100);
-  const servers = Math.ceil(guests / 20);
-
-  const handleDivineVision = () => {
+  const triggerWelcome = () => {
     confetti({
-      particleCount: 150,
+      particleCount: 100,
       spread: 70,
-      origin: { y: 0.6 },
-      colors: [colors.gold, '#ffffff']
+      origin: { y: 0.8 },
+      colors: ['#C9A86A', '#ffffff']
     });
-    alert('B.M.E: Your ' + currentPackage.name + ' vision has been elevated.');
   };
 
   return (
-    <div style={{ backgroundColor: colors.onyx, minHeight: '100vh', color: colors.ivory, fontFamily: 'serif' }}>
-      {/* Header */}
-      <header style={{ padding: '60px 20px', textAlign: 'center', borderBottom: '2px solid ' + colors.gold, background: 'linear-gradient(to bottom, #2a2a2a, #1B1B1D)' }}>
-        <h1 style={{ fontSize: '3.5rem', color: colors.gold, margin: 0, letterSpacing: '6px' }}>B.M.E</h1>
-        <p style={{ fontSize: '1.2rem', fontStyle: 'italic', color: colors.gold }}>BETHEL MAJESTY EVENTS</p>
-        <p style={{ letterSpacing: '3px', opacity: 0.8 }}>BLESSED • MOMENTS • ELEVATED</p>
-      </header>
+    <div style={{ backgroundColor: '#050505', color: '#F8F4EC', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Cinzel', serif" }}>
+      
+      {/* Cinematic Overlay Header */}
+      <div style={{ 
+        position: 'absolute', top: 0, width: '100%', zxIndex: 10, 
+        padding: '40px', textAlign: 'center', pointerEvents: 'none',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%)' 
+      }}>
+        <h1 style={{ fontSize: '4rem', color: '#C9A86A', margin: 0, letterSpacing: '12px', textShadow: '0 0 20px rgba(201,168,106,0.5)' }}>B.M.E</h1>
+        <p style={{ letterSpacing: '5px', fontSize: '1rem', opacity: 0.8 }}>BETHEL MAJESTY EVENTS</p>
+      </div>
 
-      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '60px 20px' }}>
+      {/* The 3D World */}
+      <div style={{ height: '100vh', width: '100vw', position: 'relative' }}>
+        <Suspense fallback={<div style={{ textAlign: 'center', paddingTop: '45vh' }}>ENTERING THE HOUSE OF GOD...</div>}>
+          <Spline 
+            scene="https://prod.spline.design/6Wq1Q7n6vD9T77Wl/scene.splinecode" 
+            onLoad={() => setLoading(false)}
+          />
+        </Suspense>
         
-        {/* Brand Story Section */}
-        <section style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <h2 style={{ color: colors.gold, fontSize: '2rem' }}>OUR DIVINE PURPOSE</h2>
-          <p style={{ maxWidth: '800px', margin: '20px auto', lineHeight: '1.8', fontSize: '1.1rem' }}>
-            Inspired by the biblical "House of God," B.M.E reflects a standard of purity, honor, and divine elegance. 
-            We transform visions into breathtaking realities, ensuring every celebration carries majesty and purpose.
+        {/* Interaction Prompt */}
+        {!loading && (
+          <div style={{ 
+            position: 'absolute', bottom: '10%', left: '50%', transform: 'translateX(-50%)',
+            textAlign: 'center', animation: 'fadeInOut 3s infinite'
+          }}>
+            <p style={{ fontSize: '0.8rem', letterSpacing: '2px', opacity: 0.6 }}>DRAG TO EXPLORE THE MANOR  •  SCROLL TO ENTER</p>
+          </div>
+        )}
+      </div>
+
+      {/* Floating Action Section */}
+      <section style={{ 
+        padding: '100px 20px', background: '#050505', 
+        borderTop: '1px solid #C9A86A', position: 'relative', zIndex: 5 
+      }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '3rem', color: '#C9A86A', marginBottom: '30px' }}>YOUR VISION, CROWNED.</h2>
+          <p style={{ fontSize: '1.2rem', lineHeight: '2', opacity: 0.8, marginBottom: '50px' }}>
+            Bethel Majesty Events is more than a planning service. It is a divine architecture of moments. 
+            Step inside our 3D digital twin to visualize your Genesis, Esther, or Solomon-tier gala.
           </p>
-        </section>
-
-        {/* Interactive Architect Section */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'start' }}>
           
-          {/* Inputs */}
-          <div style={{ background: '#252525', padding: '40px', borderRadius: '10px', border: '1px solid ' + colors.gold }}>
-            <h3 style={{ color: colors.gold }}>THE DIVINE ARCHITECT</h3>
-            <p style={{ fontSize: '0.9rem', opacity: 0.7 }}>Adjust your guest count to see your designated package.</p>
-            
-            <div style={{ marginTop: '40px' }}>
-              <label style={{ fontSize: '1.2rem' }}>Expected Guests: <strong style={{ color: colors.gold }}>{guests}</strong></label>
-              <input 
-                type="range" min="50" max="1000" value={guests} 
-                onChange={(e) => setGuests(e.target.value)}
-                style={{ width: '100%', marginTop: '20px', accentColor: colors.gold }}
-              />
-            </div>
-
-            <div style={{ marginTop: '40px', padding: '20px', border: '1px dashed ' + colors.gold }}>
-              <h4 style={{ margin: 0, color: colors.gold }}>{currentPackage.name}</h4>
-              <p style={{ marginBottom: 0 }}>{currentPackage.desc}</p>
-            </div>
-
-            <button 
-              onClick={handleDivineVision}
-              style={{ 
-                marginTop: '40px', width: '100%', padding: '20px', 
-                background: colors.gold, color: colors.onyx, 
-                border: 'none', fontWeight: 'bold', cursor: 'pointer', fontSize: '1.1rem' 
-              }}>ELEVATE MY MOMENT</button>
-          </div>
-
-          {/* Logistics / ROI */}
-          <div style={{ padding: '20px' }}>
-            <h3 style={{ borderBottom: '2px solid ' + colors.gold, paddingBottom: '15px' }}>MAJESTY STANDARDS</h3>
-            
-            <div style={{ marginTop: '30px' }}>
-              <div style={{ marginBottom: '30px' }}>
-                <small style={{ opacity: 0.6 }}>ESTIMATED VENUE REVENUE</small>
-                <div style={{ fontSize: '2.5rem', color: colors.gold }}>${revenue.toLocaleString()}</div>
-              </div>
-
-              <div style={{ display: 'flex', gap: '40px' }}>
-                <div>
-                  <small style={{ opacity: 0.6 }}>LOGISTICS CAPTAINS</small>
-                  <div style={{ fontSize: '1.8rem' }}>{captains}</div>
-                </div>
-                <div>
-                  <small style={{ opacity: 0.6 }}>ELITE SERVERS</small>
-                  <div style={{ fontSize: '1.8rem' }}>{servers}</div>
-                </div>
-              </div>
-
-              <div style={{ marginTop: '40px', fontStyle: 'italic', padding: '20px', borderLeft: '4px solid ' + colors.gold, background: '#111' }}>
-                "Grace. Glamour. Majesty. Your vision, crowned in excellence."
-              </div>
-            </div>
-          </div>
-
+          <button 
+            onClick={triggerWelcome}
+            style={{ 
+              padding: '25px 60px', background: 'transparent', color: '#C9A86A', 
+              border: '2px solid #C9A86A', cursor: 'pointer', fontSize: '1.2rem',
+              fontWeight: 'bold', transition: 'all 0.3s', borderRadius: '50px'
+            }}
+            onMouseOver={(e) => e.target.style.background = 'rgba(201,168,106,0.1)'}
+            onMouseOut={(e) => e.target.style.background = 'transparent'}
+          >
+            INITIALIZE DIVINE CONSULTATION
+          </button>
         </div>
-      </main>
+      </section>
 
-      <footer style={{ textAlign: 'center', padding: '60px', borderTop: '1px solid #333', opacity: 0.5 }}>
-        &copy; 2026 BETHEL MAJESTY EVENTS | CINCINNATI, OH
+      <footer style={{ padding: '40px', textAlign: 'center', opacity: 0.3, fontSize: '0.7rem' }}>
+        &copy; 2026 B.M.E | CINCINNATI | POWERED BY MAJESTY
       </footer>
+
+      <style>{`
+        @keyframes fadeInOut {
+          0%, 100% { opacity: 0.2; }
+          50% { opacity: 0.8; }
+        }
+      `}</style>
     </div>
   );
 };
 
-export default BMEEvents;
+export default BMEExperience;
