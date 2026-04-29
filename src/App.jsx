@@ -9,7 +9,7 @@ const BMEPortal = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [view]);
 
-  // Financial Intelligence
+  // --- Financial Engine (The ROI Logic) ---
   const revPerGuest = 250;
   const grossRevenue = guests * revPerGuest;
   const opexRate = 0.45; 
@@ -19,9 +19,7 @@ const BMEPortal = () => {
 
   const triggerCelebration = () => {
     confetti({ 
-      particleCount: 200, 
-      spread: 90, 
-      origin: { y: 0.6 }, 
+      particleCount: 200, spread: 90, origin: { y: 0.6 }, 
       colors: ['#C9A86A', '#F8F4EC', '#4C2A63'] 
     });
   };
@@ -37,10 +35,9 @@ const BMEPortal = () => {
   return (
     <div style={{ backgroundColor: '#050505', color: '#F8F4EC', minHeight: '100vh', fontFamily: "'Cinzel', serif", lineHeight: '1.8' }}>
       
-      {/* ATMOSPHERIC BACKGROUND */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'radial-gradient(circle at 50% 30%, rgba(201,168,106,0.1) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}></div>
+      {/* ATMOSPHERIC GOLD LIGHTS */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', background: 'radial-gradient(circle at 50% 30%, rgba(201,168,106,0.12) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }}></div>
 
-      {/* NAVIGATION */}
       <nav style={{ position: 'sticky', top: 0, zIndex: 1000, backgroundColor: 'rgba(5,5,5,0.96)', borderBottom: '1px solid rgba(201,168,106,0.3)', backdropFilter: 'blur(20px)' }}>
         <div style={{ padding: '25px 50px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div onClick={() => setView('home')} style={{ color: '#C9A86A', fontSize: '2rem', fontWeight: 'bold', letterSpacing: '8px', cursor: 'pointer' }}>B.M.E</div>
@@ -55,128 +52,180 @@ const BMEPortal = () => {
 
       <main style={{ padding: '100px 20px', maxWidth: '1280px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-        {/* --- CINEMATIC FILM VIEW --- */}
-        {view === 'thefilm' && (
-          <div style={{ animation: 'fadeIn 1.5s' }}>
-            <SectionHeader title="THE CINEMATIC ESTATE" subtitle="DRAMATIC AERIAL PREVIEW" />
-            <div style={{ width: '100%', aspectRatio: '16/9', background: '#111', border: '1px solid #C9A86A', borderRadius: '4px', overflow: 'hidden', boxShadow: '0 0 50px rgba(201,168,106,0.1)' }}>
-              <iframe 
-                width="100%" 
-                height="100%" 
-                src="https://www.youtube.com/embed/UCtYIZ7Genk?autoplay=1&mute=1&loop=1&playlist=UCtYIZ7Genk" 
-                title="BME Estate Drone Film" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
-            </div>
-            <div style={{ marginTop: '40px', textAlign: 'center' }}>
-                <p style={{ letterSpacing: '3px', opacity: 0.6 }}>CAPTURED IN 4K • THE BETHEL MAJESTY ESTATE</p>
-            </div>
-          </div>
-        )}
-
-        {/* --- HOME VIEW --- */}
+        {/* 1. HOME */}
         {view === 'home' && (
           <section style={{ textAlign: 'center', minHeight: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h1 style={{ fontSize: '7rem', color: '#C9A86A', margin: '0', animation: 'glow 3s infinite alternate' }}>B.M.E</h1>
             <p style={{ letterSpacing: '20px', opacity: 0.6, fontSize: '1.4rem' }}>MAJESTY REDEFINED</p>
-            <button onClick={() => setView('thefilm')} style={{ background: 'transparent', border: '1px solid #C9A86A', color: '#C9A86A', padding: '15px 40px', marginTop: '40px', cursor: 'pointer', letterSpacing: '4px', fontSize: '0.8rem' }}>WATCH THE FILM</button>
+            <button onClick={() => setView('thefilm')} style={{ background: 'transparent', border: '1px solid #C9A86A', color: '#C9A86A', padding: '15px 40px', marginTop: '40px', cursor: 'pointer', letterSpacing: '4px' }}>WATCH THE FILM</button>
           </section>
         )}
 
-        {/* --- ABOUT US --- */}
+        {/* 2. THE FILM */}
+        {view === 'thefilm' && (
+          <div style={{ animation: 'fadeIn 1.5s' }}>
+            <SectionHeader title="THE CINEMATIC ESTATE" subtitle="DRAMATIC AERIAL PREVIEW" />
+            <div style={{ width: '100%', aspectRatio: '16/9', background: '#111', border: '1px solid #C9A86A', borderRadius: '4px', overflow: 'hidden' }}>
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UCtYIZ7Genk?autoplay=1&mute=1&loop=1&playlist=UCtYIZ7Genk" frameBorder="0" allowFullScreen></iframe>
+            </div>
+          </div>
+        )}
+
+        {/* 3. ABOUT */}
         {view === 'about' && (
           <div style={{ animation: 'fadeIn 1s' }}>
             <SectionHeader title="THE STEWARDSHIP" subtitle="OUR STORY & DIVINE PURPOSE" />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
               <div style={{ padding: '50px', border: '1px solid #C9A86A', background: 'rgba(201,168,106,0.02)' }}>
                 <h3 style={{ color: '#C9A86A' }}>The Vision</h3>
-                <p>Inspired by the biblical "House of God," B.M.E reflects a standard of purity, honor, and divine elegance. Every event is treated as a sacred trust, elevating hospitality to a form of ministry and art.</p>
+                <p>Inspired by the biblical "House of God," B.M.E reflects a standard of purity, honor, and divine elegance. Every event is treated as a sacred trust.</p>
               </div>
               <div style={{ lineHeight: '2.2', opacity: 0.8 }}>
-                <p>Founded by Afriyie Asamoah, our $7M estate project in Cincinnati is designed to be a sanctuary. We blend high-energy event planning with the timeless beauty of biblical aesthetics to create a world-class legacy.</p>
+                <p>Founded by Afriyie Asamoah, our $7M estate project in Cincinnati blends high-energy planning with timeless aesthetics to create a world-class legacy.</p>
               </div>
             </div>
           </div>
         )}
 
-        {/* --- WEDDINGS --- */}
+        {/* 4. WEDDINGS */}
         {view === 'weddings' && (
           <div style={{ animation: 'fadeIn 1s' }}>
             <SectionHeader title="ROYAL UNIONS" subtitle="WHERE COVENANTS ARE CELEBRATED" />
             <div style={{ background: '#111', padding: '60px', borderBottom: '2px solid #C9A86A', marginBottom: '40px' }}>
               <h3 style={{ color: '#C9A86A' }}>THE PILLAR CEREMONY</h3>
-              <p>An outdoor processional framed by towering ivory pillars, designed for a union that feels timeless and sacred. Overlooking the lush landscape of the Ohio Valley.</p>
+              <p>An outdoor processional framed by towering ivory pillars, designed for a union that feels timeless and sacred.</p>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
               <div style={{ background: '#0A0A0B', padding: '40px', border: '1px solid #222' }}>
                 <h4 style={{ color: '#C9A86A' }}>Bridal Sanctuary</h4>
-                <p style={{ fontSize: '0.9rem' }}>1,500 sq. ft. of luxury featuring private vanity stations, champagne bar, and prayer nook.</p>
+                <p>1,500 sq. ft. of luxury featuring private vanity stations and champagne bar.</p>
               </div>
               <div style={{ background: '#0A0A0B', padding: '40px', border: '1px solid #222' }}>
                 <h4 style={{ color: '#C9A86A' }}>Groom's Lounge</h4>
-                <p style={{ fontSize: '0.9rem' }}>A leather-bound retreat with private cigar terrace, billiards, and bespoke tailoring services.</p>
+                <p>A leather-bound retreat with private cigar terrace and billiards.</p>
               </div>
             </div>
           </div>
         )}
 
-        {/* --- FOOD --- */}
+        {/* 5. CORPORATE (DETAILED) */}
+        {view === 'corporate' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="VISIONARY GALAS" subtitle="CORPORATE IMPACT & INNOVATION" />
+            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
+              <div>
+                <h3 style={{ color: '#C9A86A' }}>High-Impact Summits</h3>
+                <p>Transform your brand message through immersive projection mapping and 360-degree digital storytelling. Our grand hall hosts up to 800 executive guests with Tier-1 white-glove service, ensuring your mission is heard with clarity and prestige.</p>
+              </div>
+              <div style={{ background: '#0A0A0B', padding: '40px', borderLeft: '4px solid #C9A86A' }}>
+                <ul style={{ listStyle: 'none', padding: 0 }}>
+                  <li style={{ marginBottom: '20px' }}>• 4K Video Wall Integration</li>
+                  <li style={{ marginBottom: '20px' }}>• VIP Executive Boardroom Access</li>
+                  <li style={{ marginBottom: '20px' }}>• Secure Global Hybrid Stream-ready</li>
+                  <li>• Targeted Acoustic Design</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 6. SOCIAL (DETAILED) */}
+        {view === 'social' && (
+          <div style={{ animation: 'fadeIn 1s' }}>
+            <SectionHeader title="MILESTONE HONORS" subtitle="CELEBRATING LIFE'S LEGACY" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
+              <div style={{ padding: '40px', border: '1px solid #222', background: '#0A0A0B' }}>
+                <h4 style={{ color: '#C9A86A' }}>LEGACY BIRTHDAYS</h4>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>Multi-generational celebrations featuring curated family history video walls and bespoke banquet seating.</p>
+              </div>
+              <div style={{ padding: '40px', border: '1px solid #222', background: '#0A0A0B' }}>
+                <h4 style={{ color: '#C9A86A' }}>PRESTIGE GRADUATIONS</h4>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>Commemorating academic excellence with high-energy staging, lighting effects, and custom catering.</p>
+              </div>
+              <div style={{ padding: '40px', border: '1px solid #222', background: '#0A0A0B' }}>
+                <h4 style={{ color: '#C9A86A' }}>DIVINE SOIRÉES</h4>
+                <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>Thematic community gatherings and charity galas that require a touch of majesty and seamless execution.</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 7. FOOD */}
         {view === 'food' && (
           <div style={{ animation: 'fadeIn 1s' }}>
             <SectionHeader title="COVENANT DINING" subtitle="A TASTE OF THE DIVINE" />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
               <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
                 <h3 style={{ color: '#C9A86A' }}>THE ESTHER FEAST</h3>
-                <p>Pomegranate-glazed lamb, gold-leafed figs, and ancient grain pilaf sourced from local organic farms.</p>
-              </div>
-              <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
-                <h3 style={{ color: '#C9A86A' }}>LEVANTINE HARVEST</h3>
-                <p>Artisanal honeys, rare Mediterranean spices, and sea-salt crusted bass representing the bounty of the harvest.</p>
+                <p>Pomegranate-glazed lamb and gold-leafed figs sourced from local organic farms.</p>
               </div>
               <div style={{ background: '#0A0A0B', padding: '40px', borderBottom: '4px solid #C9A86A' }}>
                 <h3 style={{ color: '#C9A86A' }}>EDENIC SWEETS</h3>
-                <p>Hand-crafted chocolates with 24k gold leaf and sacred spice-infused creams.</p>
+                <p>Hand-crafted chocolates with 24k gold leaf and sacred spice creams.</p>
               </div>
             </div>
           </div>
         )}
 
-        {/* --- COLLECTIONS --- */}
+        {/* 8. COLLECTIONS (DETAILED + CONFETTI) */}
         {view === 'collections' && (
           <div style={{ animation: 'fadeIn 1s' }}>
-            <SectionHeader title="THE MAJESTY COLLECTION" subtitle="TIERED BIBLICAL PACKAGES" />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
-              <div onClick={triggerCelebration} style={{ background: '#111', padding: '40px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer' }}>
-                <h3 style={{ color: '#C9A86A' }}>THE GENESIS</h3><p>$8,000+</p>
-                <ul style={{ textAlign: 'left', fontSize: '0.8rem', opacity: 0.7 }}><li>• 4-Hour Window</li><li>• Lead Designer</li><li>• Mediterranean Menu</li></ul>
+            <SectionHeader title="THE MAJESTY COLLECTION" subtitle="TIERED BIBLICAL PACKAGES & PREMIER AMENITIES" />
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+              
+              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', cursor: 'pointer', transition: '0.3s' }}>
+                <h3 style={{ color: '#C9A86A' }}>THE GENESIS</h3>
+                <p style={{ fontSize: '0.8rem', opacity: 0.5 }}>The Foundation</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.9rem', opacity: 0.8 }}>
+                  <li>• 4-Hour Exclusive Access</li>
+                  <li>• Lead Event Architect</li>
+                  <li>• Scented Sanctuary Entry</li>
+                  <li>• Signature Mediterranean Menu</li>
+                </ul>
+                <div style={{ fontSize: '1.5rem', color: '#C9A86A', marginTop: '25px' }}>$8,000+</div>
               </div>
-              <div onClick={triggerCelebration} style={{ background: '#111', padding: '40px', border: '1px solid #C9A86A', textAlign: 'center', cursor: 'pointer' }}>
-                <div style={{ color: '#C9A86A', fontSize: '0.6rem', fontWeight: 'bold' }}>MOST POPULAR</div>
-                <h3 style={{ color: '#C9A86A' }}>THE ESTHER</h3><p>$30,000+</p>
-                <ul style={{ textAlign: 'left', fontSize: '0.8rem', opacity: 0.7 }}><li>• 5-Course Feast</li><li>• Drone Videography</li><li>• Projection Mapping</li></ul>
+
+              <div onClick={triggerCelebration} style={{ background: '#111', padding: '50px 30px', border: '1px solid #C9A86A', cursor: 'pointer', position: 'relative' }}>
+                <div style={{ position: 'absolute', top: '-15px', left: '50%', transform: 'translateX(-50%)', background: '#C9A86A', color: '#050505', padding: '5px 15px', fontSize: '0.65rem', fontWeight: 'bold' }}>PREMIER</div>
+                <h3 style={{ color: '#C9A86A' }}>THE ESTHER</h3>
+                <p style={{ fontSize: '0.8rem', opacity: 0.5 }}>For Such a Time as This</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.9rem', opacity: 0.8 }}>
+                  <li>• 5-Course Gold-Leaf Feast</li>
+                  <li>• Aerial Drone Film Capture</li>
+                  <li>• Full Projection Wall Mapping</li>
+                  <li>• Bridal & Groom Luxury Suites</li>
+                </ul>
+                <div style={{ fontSize: '1.5rem', color: '#C9A86A', marginTop: '25px' }}>$30,000+</div>
               </div>
-              <div onClick={triggerCelebration} style={{ background: '#111', padding: '40px', border: '1px solid #222', textAlign: 'center', cursor: 'pointer' }}>
-                <h3 style={{ color: '#C9A86A' }}>THE SOLOMON</h3><p>$50,000+</p>
-                <ul style={{ textAlign: 'left', fontSize: '0.8rem', opacity: 0.7 }}><li>• Weekend Takeover</li><li>• Castle Lodging</li><li>• Private Concierge</li></ul>
+
+              <div onClick={triggerCelebration} style={{ background: '#0A0A0B', padding: '50px 30px', border: '1px solid #222', cursor: 'pointer' }}>
+                <h3 style={{ color: '#C9A86A' }}>THE SOLOMON</h3>
+                <p style={{ fontSize: '0.8rem', opacity: 0.5 }}>The Pinnacle of Abundance</p>
+                <ul style={{ padding: 0, listStyle: 'none', fontSize: '0.9rem', opacity: 0.8 }}>
+                  <li>• 3-Day Estate Buyout</li>
+                  <li>• On-site Castle Lodging (12 Guests)</li>
+                  <li>• 7-Course Chef’s Table Tasting</li>
+                  <li>• White-Glove Captain Service</li>
+                </ul>
+                <div style={{ fontSize: '1.5rem', color: '#C9A86A', marginTop: '25px' }}>$50,000+</div>
               </div>
+
             </div>
           </div>
         )}
 
-        {/* --- DASHBOARD --- */}
+        {/* 9. DASHBOARD */}
         {view === 'dashboard' && (
           <div style={{ animation: 'fadeIn 1s' }}>
             <SectionHeader title="THE APEX ENGINE" subtitle="ROI & LOGISTICAL DIMENSIONS" />
             <div style={{ background: '#111', padding: '60px', border: '1px solid #C9A86A' }}>
-              <label style={{ letterSpacing: '2px' }}>GUEST CAPACITY: {guests}</label>
+              <label style={{ letterSpacing: '2px', fontSize: '0.8rem' }}>GUEST CAPACITY: {guests}</label>
               <input type="range" min="100" max="1000" value={guests} onChange={(e) => setGuests(e.target.value)} style={{ width: '100%', accentColor: '#C9A86A', marginTop: '20px' }} />
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginTop: '50px' }}>
-                <div style={{ textAlign: 'center', padding: '20px', background: '#050505' }}><small>GROSS</small><div style={{ color: '#C9A86A', fontSize: '1.2rem' }}>${grossRevenue.toLocaleString()}</div></div>
-                <div style={{ textAlign: 'center', padding: '20px', background: '#050505' }}><small>EXPENSES</small><div style={{ color: '#ff4d4d', fontSize: '1.2rem' }}>-${totalExpenses.toLocaleString()}</div></div>
-                <div style={{ textAlign: 'center', padding: '20px', background: '#050505' }}><small>NET PROFIT</small><div style={{ fontSize: '1.2rem' }}>${netProfit.toLocaleString()}</div></div>
-                <div style={{ textAlign: 'center', padding: '20px', background: '#050505' }}><small>MARGIN</small><div style={{ fontSize: '1.2rem' }}>{profitMargin}%</div></div>
+                <div style={{ textAlign: 'center', background: '#050505', padding: '20px' }}><small style={{ opacity: 0.5 }}>GROSS</small><div style={{ color: '#C9A86A', fontSize: '1.3rem' }}>${grossRevenue.toLocaleString()}</div></div>
+                <div style={{ textAlign: 'center', background: '#050505', padding: '20px' }}><small style={{ opacity: 0.5 }}>EXPENSES</small><div style={{ color: '#ff4d4d', fontSize: '1.3rem' }}>-${totalExpenses.toLocaleString()}</div></div>
+                <div style={{ textAlign: 'center', background: '#050505', padding: '20px' }}><small style={{ opacity: 0.5 }}>NET PROFIT</small><div style={{ fontSize: '1.3rem' }}>${netProfit.toLocaleString()}</div></div>
+                <div style={{ textAlign: 'center', background: '#050505', padding: '20px' }}><small style={{ opacity: 0.5 }}>MARGIN</small><div style={{ fontSize: '1.3rem' }}>{profitMargin}%</div></div>
               </div>
             </div>
           </div>
@@ -184,15 +233,11 @@ const BMEPortal = () => {
 
       </main>
 
-      <footer style={{ padding: '80px 50px', background: '#000', textAlign: 'center', opacity: 0.4, borderTop: '1px solid #222' }}>
-        <h2 style={{ color: '#C9A86A', letterSpacing: '5px' }}>B.M.E</h2>
-        <p>© 2026 DIVINE EXCELLENCE • CINCINNATI, OH</p>
-      </footer>
-
       <style>{`
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes glow { from { text-shadow: 0 0 20px rgba(201,168,106,0.3); } to { text-shadow: 0 0 40px rgba(201,168,106,0.6); } }
         body { margin: 0; background: #050505; }
+        input[type=range] { cursor: pointer; }
       `}</style>
     </div>
   );
