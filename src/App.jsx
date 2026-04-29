@@ -2,100 +2,116 @@ import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 
 const BMEPortal = () => {
-  const [activePackage, setActivePackage] = useState(null);
+  const [selectedPkg, setSelectedPkg] = useState(null);
 
   const packages = [
-    { id: 'genesis', name: 'The Genesis', price: '$8,000+', desc: 'Intimate. Sacred. Intention.', icon: '🕊️' },
-    { id: 'esther', name: 'The Esther', price: '$20,000+', desc: 'Glamour. Grace. Royalty.', icon: '👑' },
-    { id: 'solomon', name: 'The Solomon', price: '$50,000+', desc: 'Top-tier Luxury. Wisdom. Excellence.', icon: '🏛️' }
+    { 
+      id: 'genesis', 
+      name: 'The Genesis', 
+      price: '$8,000+', 
+      icon: '🕊️',
+      details: ["Intimate Venue Curation", "4-Hour Event Window", "Signature Decor Package", "Dedicated Day-of Lead"],
+      vibe: "A sacred beginning for your most meaningful moments."
+    },
+    { 
+      id: 'esther', 
+      name: 'The Esther', 
+      price: '$20,000+', 
+      icon: '👑',
+      details: ["Full-Service Planning", "Luxury Floral Arrangements", "Custom Lighting Design", "Elite Vendor Coordination", "Bespoke Menu Planning"],
+      vibe: "Step into your royal moment with grace and glamour."
+    },
+    { 
+      id: 'solomon', 
+      name: 'The Solomon', 
+      price: '$50,000+', 
+      icon: '🏛️',
+      details: ["The 'Majesty' Multi-Day Planning", "Custom Castle-Style Build-outs", "VIP Concierge Staff", "Full Production & AV", "Premium Global Logistics"],
+      vibe: "The pinnacle of excellence. No detail left untouched."
+    }
   ];
 
-  const handleDivineVision = (name) => {
+  const openDetails = (pkg) => {
     confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#C9A86A', '#ffffff', '#4C2A63']
+      particleCount: 100,
+      spread: 60,
+      origin: { y: 0.7 },
+      colors: ['#C9A86A', '#ffffff']
     });
-    setActivePackage(name);
+    setSelectedPkg(pkg);
   };
 
   return (
-    <div style={{ 
-      backgroundColor: '#0a0a0a', 
-      color: '#F8F4EC', 
-      minHeight: '100vh', 
-      fontFamily: 'serif',
-      padding: '0 20px'
-    }}>
-      {/* Cinematic Hero Section */}
-      <section style={{ 
-        height: '80vh', 
-        display: 'flex', 
-        flexDirection: 'column', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        textAlign: 'center',
-        borderBottom: '1px solid #C9A86A'
-      }}>
-        <h1 style={{ fontSize: '4rem', color: '#C9A86A', margin: 0, letterSpacing: '15px', fontWeight: '300' }}>B.M.E</h1>
-        <p style={{ fontSize: '1.2rem', letterSpacing: '5px', marginTop: '10px', opacity: 0.8 }}>BETHEL MAJESTY EVENTS</p>
-        <div style={{ width: '60px', height: '2px', backgroundColor: '#C9A86A', margin: '30px 0' }}></div>
-        <p style={{ maxWidth: '600px', fontStyle: 'italic', lineHeight: '1.6', fontSize: '1.1rem' }}>
-          "Where Blessed Moments Become Majestic."
-        </p>
+    <div style={{ backgroundColor: '#050505', color: '#F8F4EC', minHeight: '100vh', fontFamily: 'serif', padding: '0 20px' }}>
+      
+      {/* Header */}
+      <section style={{ height: '60vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '4rem', color: '#C9A86A', margin: 0, letterSpacing: '12px' }}>B.M.E</h1>
+        <p style={{ fontSize: '1rem', letterSpacing: '4px', opacity: 0.8 }}>BETHEL MAJESTY EVENTS</p>
+        <p style={{ marginTop: '20px', fontStyle: 'italic', color: '#C9A86A' }}>Blessed • Moments • Elevated</p>
       </section>
 
-      {/* Interactive Experience Section */}
-      <section style={{ padding: '100px 0', maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={{ textAlign: 'center', color: '#C9A86A', fontSize: '2rem', marginBottom: '60px', letterSpacing: '3px' }}>SELECT YOUR EXPERIENCE</h2>
-        
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '30px' }}>
+      {/* Grid */}
+      <section style={{ paddingBottom: '100px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
           {packages.map((pkg) => (
             <div 
               key={pkg.id}
-              onClick={() => handleDivineVision(pkg.name)}
+              onClick={() => openDetails(pkg)}
               style={{ 
-                background: '#151515', 
-                padding: '50px 30px', 
-                borderRadius: '15px', 
-                border: '1px solid #333', 
-                textAlign: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.4s ease',
-                transform: activePackage === pkg.name ? 'scale(1.05)' : 'scale(1)',
-                borderColor: activePackage === pkg.name ? '#C9A86A' : '#333'
+                background: '#111', padding: '60px 40px', borderRadius: '5px', 
+                border: '1px solid #333', textAlign: 'center', cursor: 'pointer',
+                transition: 'all 0.3s ease', position: 'relative', overflow: 'hidden'
               }}
+              onMouseOver={(e) => e.currentTarget.style.borderColor = '#C9A86A'}
+              onMouseOut={(e) => e.currentTarget.style.borderColor = '#333'}
             >
               <div style={{ fontSize: '3rem', marginBottom: '20px' }}>{pkg.icon}</div>
-              <h3 style={{ color: '#C9A86A', fontSize: '1.5rem', marginBottom: '10px' }}>{pkg.name}</h3>
-              <p style={{ opacity: 0.7, marginBottom: '20px' }}>{pkg.desc}</p>
-              <div style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>{pkg.price}</div>
-              {activePackage === pkg.name && (
-                <div style={{ marginTop: '20px', color: '#C9A86A', fontSize: '0.9rem', animation: 'fadeIn 0.5s' }}>
-                  VISION INITIALIZED
-                </div>
-              )}
+              <h2 style={{ color: '#C9A86A', fontSize: '1.8rem', letterSpacing: '2px' }}>{pkg.name}</h2>
+              <p style={{ opacity: 0.6, marginTop: '10px' }}>Click to view details</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Brand Values */}
-      <footer style={{ padding: '100px 0', textAlign: 'center', borderTop: '1px solid #222' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', flexWrap: 'wrap', opacity: 0.6, fontSize: '0.9rem', letterSpacing: '2px' }}>
-          <span>EXCELLENCE</span>
-          <span>INTEGRITY</span>
-          <span>GRACE</span>
-          <span>MAJESTY</span>
-        </div>
-        <p style={{ marginTop: '50px', opacity: 0.3, fontSize: '0.8rem' }}>&copy; 2026 Bethel Majesty Events | Cincinnati, OH</p>
-      </footer>
+      {/* Detail Modal Overlay */}
+      {selectedPkg && (
+        <div style={{ 
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', 
+          backgroundColor: 'rgba(0,0,0,0.95)', zIndex: 1000, display: 'flex', 
+          justifyContent: 'center', alignItems: 'center', padding: '20px'
+        }}>
+          <div style={{ 
+            background: '#151515', width: '100%', maxWidth: '600px', 
+            padding: '50px', border: '1px solid #C9A86A', position: 'relative' 
+          }}>
+            <button 
+              onClick={() => setSelectedPkg(null)}
+              style={{ position: 'absolute', top: '20px', right: '20px', background: 'none', border: 'none', color: '#C9A86A', fontSize: '1.5rem', cursor: 'pointer' }}
+            >✕</button>
+            
+            <h2 style={{ color: '#C9A86A', fontSize: '2.5rem', margin: '0 0 10px 0' }}>{selectedPkg.name}</h2>
+            <p style={{ fontStyle: 'italic', marginBottom: '30px', opacity: 0.8 }}>{selectedPkg.vibe}</p>
+            
+            <div style={{ textAlign: 'left', margin: '40px 0' }}>
+              <h4 style={{ color: '#C9A86A', letterSpacing: '2px', marginBottom: '15px' }}>SPECIFICATIONS</h4>
+              <ul style={{ listStyle: 'none', padding: 0, lineHeight: '2' }}>
+                {selectedPkg.details.map((item, i) => (
+                  <li key={i}>• {item}</li>
+                ))}
+              </ul>
+            </div>
 
-      <style>{`
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        body { margin: 0; background-color: #0a0a0a; }
-      `}</style>
+            <div style={{ fontSize: '1.8rem', fontWeight: 'bold', color: '#C9A86A', borderTop: '1px solid #333', paddingTop: '20px' }}>
+              {selectedPkg.price}
+            </div>
+          </div>
+        </div>
+      )}
+
+      <footer style={{ padding: '60px', textAlign: 'center', opacity: 0.3 }}>
+        &copy; 2026 Bethel Majesty Events | Cincinnati, OH
+      </footer>
     </div>
   );
 };
